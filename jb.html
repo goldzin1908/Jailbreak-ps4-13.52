@@ -40,7 +40,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background-image: 
+        background-image:
           radial-gradient(at 10% 20%, rgba(30, 58, 138, 0.15) 0px, transparent 50%),
           radial-gradient(at 90% 80%, rgba(8, 145, 178, 0.15) 0px, transparent 50%);
         opacity: 0.8;
@@ -62,18 +62,18 @@
         justify-content: center;
         align-items: center;
         transition: all 0.6s var(--ease);
-        box-shadow: 0 30px 60px rgba(0,0,0,0.4), 
+        box-shadow: 0 30px 60px rgba(0,0,0,0.4),
                     inset 0 0 0 1px rgba(255,255,255,0.05);
       }
 
       body.done #main-container {
-        box-shadow: 0 30px 80px rgba(0, 255, 136, 0.15), 
+        box-shadow: 0 30px 80px rgba(0, 255, 136, 0.15),
                     inset 0 0 0 1px rgba(0, 255, 136, 0.3);
         border-color: rgba(0, 255, 136, 0.3);
       }
 
       body.fail #main-container {
-        box-shadow: 0 30px 80px rgba(255, 51, 51, 0.15), 
+        box-shadow: 0 30px 80px rgba(255, 51, 51, 0.15),
                     inset 0 0 0 1px rgba(255, 51, 51, 0.3);
         border-color: rgba(255, 51, 51, 0.3);
       }
@@ -229,6 +229,69 @@
         color: rgba(255, 255, 255, 0.2);
         letter-spacing: 0.2em;
       }
+
+      #donation-modal[hidden] { display: none; }
+
+      #donation-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.72);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
+
+      .donation-card {
+        width: min(100%, 360px);
+        padding: 28px 24px 24px;
+        text-align: center;
+        background: #101722;
+        border: 1px solid rgba(0, 255, 136, 0.45);
+        border-radius: 22px;
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55),
+                    0 0 35px rgba(0, 255, 136, 0.12);
+      }
+
+      .donation-card h2 {
+        margin-bottom: 12px;
+        color: var(--color-ok);
+        font-size: 21px;
+      }
+
+      .donation-card p {
+        margin-bottom: 22px;
+        color: var(--color-text);
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .donation-actions { display: flex; gap: 12px; }
+
+      .donation-actions button {
+        flex: 1;
+        min-height: 44px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        color: var(--color-text);
+        background: rgba(255, 255, 255, 0.06);
+        font: 700 14px 'Inter', sans-serif;
+        cursor: pointer;
+      }
+
+      .donation-actions button:first-child {
+        border-color: var(--color-ok);
+        color: #04130c;
+        background: var(--color-ok);
+      }
+
+      .donation-actions button:focus-visible {
+        outline: 2px solid #fff;
+        outline-offset: 3px;
+      }
     </style>
   </head>
   <body>
@@ -243,13 +306,24 @@
     </div>
 
     <div id="msg">Restart your console</div>
-    
+
     <div id="wrap">
       <div id="state"></div>
       <div id="out"></div>
     </div>
 
     <div id="footer">RYANFX // NVS_CORE</div>
+
+    <div id="donation-modal" hidden role="dialog" aria-modal="true" aria-labelledby="donation-title">
+      <div class="donation-card">
+        <h2 id="donation-title">Deseja fazer uma doação?</h2>
+        <p>Se este projeto foi útil para você, apoie o desenvolvedor pelo LivePix.</p>
+        <div class="donation-actions">
+          <button id="donation-yes" type="button">Sim</button>
+          <button id="donation-no" type="button">Não</button>
+        </div>
+      </div>
+    </div>
 
     <script type="module">
       import "./jb.js?v=10";

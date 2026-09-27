@@ -52,6 +52,24 @@ if (SHOW_LOG && document.body) document.body.className = "log";
 function finishUI(ok) {
   if (SHOW_LOG || !document.body) return;
   document.body.className = ok ? "done" : "fail";
+  if (ok) showDonationPopup();
+}
+function showDonationPopup() {
+  const modal = document.getElementById("donation-modal");
+  const yes = document.getElementById("donation-yes");
+  const no = document.getElementById("donation-no");
+  if (!modal || !yes || !no || modal.dataset.shown === "1") return;
+
+  modal.dataset.shown = "1";
+  modal.hidden = false;
+  yes.focus();
+  yes.addEventListener("click", function () {
+    window.open("https://livepix.gg/goldzin1908", "_blank", "noopener,noreferrer");
+    modal.hidden = true;
+  });
+  no.addEventListener("click", function () {
+    modal.hidden = true;
+  });
 }
 function mark(tag, detail) {
   const raw = detail;
