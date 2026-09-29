@@ -52,6 +52,19 @@ if (SHOW_LOG && document.body) document.body.className = "log";
 function finishUI(ok) {
   if (SHOW_LOG || !document.body) return;
   document.body.className = ok ? "done" : "fail";
+  if (ok) showTelegramPopup();
+
+}
+function showTelegramPopup() {
+  const modal = document.getElementById("telegram-modal");
+  const close = document.getElementById("telegram-close");
+  if (!modal || !close || modal.dataset.shown === "1") return;
+  modal.dataset.shown = "1";
+  modal.hidden = false;
+  close.focus();
+  close.addEventListener("click", function () {
+    modal.hidden = true;
+  });
 }
 function mark(tag, detail) {
   const raw = detail;

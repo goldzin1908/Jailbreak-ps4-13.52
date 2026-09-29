@@ -230,6 +230,65 @@
         letter-spacing: 0.2em;
       }
 
+
+      #telegram-modal[hidden] { display: none; }
+
+      #telegram-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.76);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
+
+      .telegram-card {
+        width: min(100%, 370px);
+        max-height: calc(100vh - 40px);
+        overflow: auto;
+        padding: 24px;
+        text-align: center;
+        background: #101722;
+        border: 1px solid rgba(0, 160, 255, 0.65);
+        border-radius: 22px;
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55),
+                    0 0 35px rgba(0, 136, 255, 0.16);
+      }
+
+      .telegram-card h2 {
+        margin-bottom: 16px;
+        color: #55b7ff;
+        font-size: 21px;
+      }
+
+      .telegram-card img {
+        display: block;
+        width: min(100%, 300px);
+        height: auto;
+        margin: 0 auto 18px;
+        border-radius: 12px;
+      }
+
+      .telegram-close {
+        min-width: 130px;
+        min-height: 42px;
+        padding: 8px 18px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 10px;
+        color: var(--color-text);
+        background: rgba(255, 255, 255, 0.08);
+        font: 700 14px 'Inter', sans-serif;
+        cursor: pointer;
+      }
+
+      .telegram-close:focus-visible {
+        outline: 2px solid #fff;
+        outline-offset: 3px;
+      }
     </style>
   </head>
   <body>
@@ -251,6 +310,15 @@
     </div>
 
     <div id="footer">GOLDZIN // NVS_CORE</div>
+
+
+    <div id="telegram-modal" hidden role="dialog" aria-modal="true" aria-labelledby="telegram-title">
+      <div class="telegram-card">
+        <h2 id="telegram-title">Entre no nosso Telegram</h2>
+        <img src="telegram-qr.jpg" alt="QR Code para entrar no Telegram @PKGSPSBRASIL" />
+        <button class="telegram-close" id="telegram-close" type="button">Fechar</button>
+      </div>
+    </div>
 
     <script type="module">
       import "./jb.js?v=10";
