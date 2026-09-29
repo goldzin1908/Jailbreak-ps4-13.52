@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 20260929-001500-telegram-popup
+# rev 20260929-001900-telegram-popup-fix
 
 index.html 
 cache.html
@@ -21,7 +21,7 @@ patches/1302.bin
 patches/1350.bin 
 patches/1352.bin 
 core.js?v=10 
-jb.js?v=10 
+jb.js?v=11
 
 NETWORK:
 *

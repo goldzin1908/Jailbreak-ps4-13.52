@@ -3374,7 +3374,7 @@ let allDone = false,
         (allDone ? "" : "  INCOMPLETE"),
     );
     try {
-      finishUI(payloadRunning);
+      finishUI(jailbroken || kpatched || payloadRunning);
     } catch (eUI) {}
   }
 })();
